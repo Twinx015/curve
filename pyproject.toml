@@ -1,0 +1,17 @@
+[project]
+name = "curve"
+version = "0.1.0"
+description = "a terminal based journey tracking app for your personal + development journey"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["rich"]
+
+[project.scripts]
+curve = "curve.main:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["curve*"]

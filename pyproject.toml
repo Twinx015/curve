@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "a terminal based journey tracking app for your personal + development journey"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["rich"]
+dependencies = ["cryptography>=50.0.2", "rich"]
 
 [project.scripts]
 curve = "curve.main:main"

@@ -1,0 +1,15 @@
+; Conventional commit message.  No generated headings, just body fields.
+
+name = "commit"
+description = "Conventional commit message"
+directory = "commits"
+filename = "{date}-{clock}-{template}"
+extension = "txt"
+encrypt = false
+autofill = true
+fields = ["type=feat", "scope=core", "summary", "details"]
+
+--
+{type}({scope}): {summary}
+
+{details}

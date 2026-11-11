@@ -1,24 +1,4 @@
 #!/usr/bin/env python3
-"""Password-based authenticated encryption helpers.
-
-This module only defines reusable functions; importing it has no side effects
-and it does not parse command-line arguments. Use it from :mod:`curve.main`
-like this::
-
-    from curve.encrypt import decrypt, encrypt
-
-    blob = encrypt("my secret", "a long passphrase")
-    text = decrypt(blob, "a long passphrase").decode("utf-8")
-
-For files, use :func:`encrypt_file` and :func:`decrypt_file`::
-
-    encrypt_file("journal.txt", "a long passphrase")   # -> journal.txt.enc
-    decrypt_file("journal.txt.enc", "a long passphrase")  # -> journal.txt
-
-The format is self-contained (salt, nonce and KDF parameters are stored in an
-authenticated header), so decryption only requires the password.
-"""
-
 from __future__ import annotations
 
 import os
@@ -122,7 +102,9 @@ def decrypt(blob: BytesLike, password: str) -> bytes:
     try:
         return AESGCM(key).decrypt(nonce, data[HEADER_LEN:], header)
     except InvalidTag:
-        raise ValueError("Wrong password, or the file was modified/corrupted.") from None
+        raise ValueError(
+            "Wrong password, or the file was modified/corrupted."
+        ) from None
 
 
 def is_encrypted(blob: str | BytesLike) -> bool:
@@ -193,9 +175,7 @@ def encrypt_file(
     )
     with source.open("rb") as file:
         payload = file.read()
-    return write_atomic(
-        destination, encrypt(payload, password), overwrite=overwrite
-    )
+    return write_atomic(destination, encrypt(payload, password), overwrite=overwrite)
 
 
 def decrypt_file(

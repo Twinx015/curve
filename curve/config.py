@@ -29,6 +29,9 @@ _BARE_KEY_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 
 
 def config_dir() -> Path:
+    override = os.environ.get("CURVE_HOME")
+    if override:
+        return Path(override).expanduser()
     return Path.home() / CONFIG_DIR_NAME
 
 

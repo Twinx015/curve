@@ -1,0 +1,26 @@
+; Base daily template.  Semicolon lines are comments.
+; Options are `key = value`; the header ends at `--`.
+
+name = "template"
+description = "Default daily journey entry"
+directory = "entries"
+filename = "{date}-{template}"
+extension = "md"
+encrypt = false
+autofill = true
+
+#day
+##date
+##time
+--
+## What did I do today?
+
+-
+
+## What did I learn?
+
+-
+
+## What is next?
+
+-

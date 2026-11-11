@@ -1,0 +1,28 @@
+; Personal journal.  Entries are encrypted at rest with AES-256-GCM.
+
+name = "personal"
+description = "Encrypted personal journal entry"
+directory = "journal"
+filename = "{date}-personal"
+extension = "md"
+encrypt = true
+autofill = true
+fields = ["mood", "energy=3", "gratitude"]
+
+#day
+##date
+##time
+##mood
+##energy
+--
+## Highlights
+
+{gratitude}
+
+## What happened?
+
+-
+
+## How do I feel?
+
+-
